@@ -81,7 +81,7 @@ Start Laravel backend:
 php artisan serve
 
 
-Backend will run at http://localhost:8000
+Backend will run at: http://localhost:8000
 
 3. Frontend setup (Vue 3 + Vite)
 cd ../frontend
@@ -93,7 +93,7 @@ Run development server:
 npm run dev
 
 
-Frontend will run at http://localhost:5173
+Frontend will run at: http://localhost:5173
 
 4. Login Credentials (Seeded Users)
 Email	Password
@@ -129,7 +129,7 @@ GET	/api/orders?symbol=BTC	Get open orders for symbol
 POST	/api/orders	Place a limit order
 POST	/api/orders/{id}/cancel	Cancel an open order
 
-Use Axios with withCredentials: true for authenticated API calls.
+Note: Use Axios with withCredentials: true for authenticated API calls.
 
 7. Real-time Events
 Event Name	Description	Channel
@@ -160,17 +160,19 @@ Ensure SANCTUM_STATEFUL_DOMAINS=localhost:5173 in .env
 
 withCredentials: true is required in Axios for all API calls
 
-CSRF cookie: Always call /sanctum/csrf-cookie before login request:
+CSRF cookie: Always call /sanctum/csrf-cookie before login:
 
 await api.get('http://localhost:8000/sanctum/csrf-cookie', { withCredentials: true })
 
 
-Database errors: If migrations fail due to existing tables, run:
+Database errors:
+If migrations fail due to existing tables:
 
 php artisan migrate:fresh --seed
 
 
-Pusher: Replace .env values with your Pusher credentials:
+Pusher:
+Replace .env values with your Pusher credentials:
 
 BROADCAST_DRIVER=pusher
 PUSHER_APP_ID=your_app_id
@@ -185,7 +187,3 @@ Root folder contains two folders: backend/ and frontend/
 Include .gitignore for both backend and frontend:
 
 Backend: ignore vendor/, .env
-
-Frontend: ignore node_modules/, .env.local
-
-Commit messages: Use clear messages, e.g., "Add order matching logic" or "Implement Vue dashboard".
